@@ -18,7 +18,7 @@ if ( current_user_can('delete_plugins') ) {
 
 	// delete old tables
 	if ( !function_exists( 'is_plugin_active_for_network' ) ) require_once( ABSPATH . '/wp-admin/includes/plugin.php' );
-	if ( is_plugin_active_for_network( __FILE__ ) ) {
+	if (  is_multisite() && is_plugin_active_for_network( __FILE__ ) ) {
 		$prefix = $wpdb->base_prefix;
 	} else {
 		$prefix = $wpdb->prefix;
